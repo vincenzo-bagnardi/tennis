@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Calendario Campi Tennis</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .tabs {
+      display: flex;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #ccc;
+    }
+
+    .tab {
+      padding: 10px 20px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      border-bottom: none;
+      background-color: #f5f5f5;
+      margin-right: 5px;
+      border-radius: 5px 5px 0 0;
+    }
+
+    .tab.active {
+      background-color: white;
+      font-weight: bold;
+    }
+
+    .calendar-container {
+      display: none;
+    }
+
+    .calendar-container.active {
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Calendario Occupazione Campi Tennis</h1>
+  <p>Consulta la disponibilità mensile dei campi. Ogni campo ha il suo calendario separato.</p>
+
+  <div class="tabs">
+    <div class="tab active" onclick="showCalendar('campo1')">Campo 1</div>
+    <div class="tab" onclick="showCalendar('campo2')">Campo 2</div>
+    <div class="tab" onclick="showCalendar('campo3')">Campo 3</div>
+  </div>
+
+  <div id="campo1" class="calendar-container active">
+    <iframe src="https://calendar.google.com/calendar/embed?src=80bf4ac36fd1211ec234b6e598853c449da70aa7bda202b7405193b7884c8647@group.calendar.google.com&ctz=Europe%2FRome&mode=MONTH&hl=it"></iframe>
+  </div>
+
+  <div id="campo2" class="calendar-container">
+    <iframe src="https://calendar.google.com/calendar/embed?src=24eb6f208a74749ef965cab1845ce82dfb14b1c9f128d6709ac2142c77363bd1@group.calendar.google.com&ctz=Europe%2FRome&mode=MONTH&hl=it"></iframe>
+  </div>
+
+  <div id="campo3" class="calendar-container">
+    <iframe src="https://calendar.google.com/calendar/embed?src=3a85a40a0203c73a76fd05eb5071f1706a9223de7338e976ee51f7d205abd6f4@group.calendar.google.com&ctz=Europe%2FRome&mode=MONTH&hl=it"></iframe>
+  </div>
+
+  <script>
+    function showCalendar(id) {
+      const tabs = document.querySelectorAll('.tab');
+      const containers = document.querySelectorAll('.calendar-container');
+
+      tabs.forEach(tab => tab.classList.remove('active'));
+      containers.forEach(container => container.classList.remove('active'));
+
+      document.querySelector('.tab[onclick*="' + id + '"]').classList.add('active');
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
